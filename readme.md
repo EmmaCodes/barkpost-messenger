@@ -11,6 +11,10 @@ If you don't want to use Homestead, you're environment must meet these requireme
 - Tokenizer PHP Extension
 - XML PHP Extension
 
+mysql
+mysql --database forge -u root
+grant ALL on forge.* to 'forge'@'localhost';
+
 ## Developing
 php artisan serve
 gulp watch
