@@ -89,7 +89,12 @@ class VideoController extends Controller
      */
     public function show($id)
     {
-        //
+        // get the nerd
+        $video = Video::find($id);
+
+        // show the view and pass the nerd to it
+        return View::make('videos.show')
+            ->with('video', $video);
     }
 
     /**
