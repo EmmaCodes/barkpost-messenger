@@ -15,7 +15,7 @@
         
         <div class="container">
 
-        	<h1>Edit a Video</h1>
+        	<h1>Edit an Audio Clip</h1>
 
 			<!-- if there are creation errors, they will show here -->
 			@if (count($errors) > 0)
@@ -29,7 +29,7 @@
 			@endif
 
 			
-			{{ Form::model($video, array('route' => array('videos.update', $video->id), 'method' => 'PUT')) }}
+			{{ Form::model($audio_clip, array('route' => array('audio-clips.update', $audio_clip->id), 'method' => 'PUT')) }}
 
 			    <div class="row">
 			        {{ Form::label('name', 'Name') }}
@@ -42,11 +42,6 @@
 			    </div>
 
 			    <div class="row">
-			        {{ Form::label('video_type_id', 'Video Type') }}
-			        {{ Form::select('video_type_id', $video_types) }}
-			    </div>
-
-			    <div class="row">
 			        {{ Form::label('source', 'Source URL') }}
 			        {{ Form::text('source', null) }}
 			    </div>
@@ -56,15 +51,15 @@
 			        {{ Form::text('payload', null) }}
 			    </div>
 
-			    {{ Form::submit('Save Video', array('class' => 'btn btn-primary')) }}
+			    {{ Form::submit('Save Audio Clip', array('class' => 'btn btn-primary')) }}
 
 			{{ Form::close() }}
 
 			<!-- delete the video (uses the destroy method DESTROY /videos/{id} -->
             <!-- we will add this later since its a little more complicated than the other two buttons -->
-            {{ Form::open(array('url' => 'videos/' . $video->id)) }}
+            {{ Form::open(array('url' => 'audio-clips/' . $audio_clip->id)) }}
                 {{ Form::hidden('_method', 'DELETE') }}
-                {{ Form::submit('Delete this Video') }}
+                {{ Form::submit('Delete this Audio Clip') }}
             {{ Form::close() }}
 
         </div>

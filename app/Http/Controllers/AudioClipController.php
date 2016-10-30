@@ -12,10 +12,9 @@ use Validator;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Video;
-use App\VideoTypes;
+use App\AudioClip;
 
-class VideoController extends Controller
+class AudioClipController extends Controller
 {
 
     /**
@@ -25,10 +24,10 @@ class VideoController extends Controller
      */
     public function index()
     {
-        $videos = Video::all();
-  
-        return View::make('videos.index')
-            ->with('videos', $videos);
+        $audio_clips = AudioClip::all();
+
+        return View::make('audio_clips.index')
+            ->with('audio_clips', $audio_clips);
         
     }
 
@@ -39,9 +38,7 @@ class VideoController extends Controller
      */
     public function create()
     {
-        $video_types = VideoTypes::pluck('name', 'id')->toArray();
-
-        return View::make('videos.create', compact('video_types', $video_types));
+        return View::make('audio_clips.create');
     }
 
     /**
@@ -52,28 +49,27 @@ class VideoController extends Controller
     public function store(Request $request)
     {
         $rules =[
-            'source' => 'required|unique:videos',
+            'source' => 'required',
             'payload' => 'required',
         ];
 
         $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
-            return Redirect::to('videos/create')
+            return Redirect::to('audio-clips/create')
                 ->withErrors($validator)
                 ->withInput();
         } 
 
-        $video = new Video();
-        $video->name = $request->name;
-        $video->description = $request->description;
-        $video->video_type_id = $request->video_type_id;
-        $video->source = $request->source;
-        $video->payload = $request->payload;
-        $video->save();
+        $audio_clip = new AudioClip();
+        $audio_clip->name = $request->name;
+        $audio_clip->description = $request->description;
+        $audio_clip->source = $request->source;
+        $audio_clip->payload = $request->payload;
+        $audio_clip->save();
 
-        Session::flash('message', 'Successfully created video!');
-        return Redirect::to('videos');
+        Session::flash('message', 'Successfully created audio!');
+        return Redirect::to('audio-clips');
         
     }
 
@@ -85,10 +81,10 @@ class VideoController extends Controller
      */
     public function show($id)
     {
-        $video = Video::find($id);
+        $audio_clip = AudioClip::find($id);
 
-        return View::make('videos.show')
-            ->with('video', $video);
+        return View::make('audio_clips.show')
+            ->with('audio_clip', $audio_clip);
     }
 
     /**
@@ -99,11 +95,10 @@ class VideoController extends Controller
      */
     public function edit($id)
     {
-        $video = Video::find($id);
-        $video_types = VideoTypes::pluck('name', 'id')->toArray();
+        $audio_clip = AudioClip::find($id);
 
-        return View::make('videos.edit', compact('video_types', $video_types))
-            ->with('video', $video);
+        return View::make('audio_clips.edit')
+            ->with('audio_clip', $audio_clip);
     }
 
     /**
@@ -115,28 +110,27 @@ class VideoController extends Controller
     public function update(Request $request, $id)
     {
         $rules =[
-            'source' => 'required|unique:videos' . ($id ? ",id,$id" : ''),
+            'source' => 'required|unique:audio_clips' . ($id ? ",id,$id" : ''),
             'payload' => 'required',
         ];
 
         $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
-            return Redirect::to('videos/' . $id . '/edit')
+            return Redirect::to('audio-clips/' . $id . '/edit')
                 ->withErrors($validator)
                 ->withInput();
         } 
 
-        $video = Video::find($id);
-        $video->name = $request->name;
-        $video->description = $request->description;
-        $video->video_type_id = $request->video_type_id;
-        $video->source = $request->source;
-        $video->payload = $request->payload;
-        $video->save();
+        $audio_clip = AudioClip::find($id);
+        $audio_clip->name = $request->name;
+        $audio_clip->description = $request->description;
+        $audio_clip->source = $request->source;
+        $audio_clip->payload = $request->payload;
+        $audio_clip->save();
 
-        Session::flash('message', 'Successfully updated video!');
-        return Redirect::to('videos');
+        Session::flash('message', 'Successfully updated audio!');
+        return Redirect::to('audio-clips');
     }
 
     /**
@@ -147,11 +141,11 @@ class VideoController extends Controller
      */
     public function destroy($id)
     {
-        $video = Video::find($id);
-        $video->delete();
+        $audio_clip = AudioClip::find($id);
+        $audio_clip->delete();
 
         // redirect
-        Session::flash('message', 'Successfully deleted the video!');
-        return Redirect::to('videos');
+        Session::flash('message', 'Successfully deleted the audio!');
+        return Redirect::to('audio-clips');
     }
 }

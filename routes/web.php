@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::resource('videos', 'VideoController');
+
+Route::resource('audio-clips', 'AudioClipController');
