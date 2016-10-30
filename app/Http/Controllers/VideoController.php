@@ -139,7 +139,7 @@ class VideoController extends Controller
         $video->payload = $request->payload;
         $video->save();
 
-        Session::flash('message', 'Successfully created video!');
+        Session::flash('message', 'Successfully updated video!');
         return Redirect::to('videos');
     }
 
@@ -151,6 +151,11 @@ class VideoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $video = Video::find($id);
+        $video->delete();
+
+        // redirect
+        Session::flash('message', 'Successfully deleted the video!');
+        return Redirect::to('videos');
     }
 }

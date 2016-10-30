@@ -60,6 +60,13 @@
 
 			{{ Form::close() }}
 
+			<!-- delete the video (uses the destroy method DESTROY /videos/{id} -->
+            <!-- we will add this later since its a little more complicated than the other two buttons -->
+            {{ Form::open(array('url' => 'videos/' . $video->id)) }}
+                {{ Form::hidden('_method', 'DELETE') }}
+                {{ Form::submit('Delete this Video') }}
+            {{ Form::close() }}
+
         </div>
 
         @include('partials/js')
