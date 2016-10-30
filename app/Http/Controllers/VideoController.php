@@ -66,7 +66,6 @@ class VideoController extends Controller
                 ->withInput();
         } 
 
-        // store
         $video = new Video();
         $video->name = $request->name;
         $video->description = $request->description;
@@ -75,7 +74,6 @@ class VideoController extends Controller
         $video->payload = $request->payload;
         $video->save();
 
-        // redirect
         Session::flash('message', 'Successfully created video!');
         return Redirect::to('videos');
         
@@ -89,10 +87,8 @@ class VideoController extends Controller
      */
     public function show($id)
     {
-        // get the nerd
         $video = Video::find($id);
 
-        // show the view and pass the nerd to it
         return View::make('videos.show')
             ->with('video', $video);
     }
@@ -105,7 +101,11 @@ class VideoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $video = Video::find($id);
+        $video_types = VideoTypes::pluck('name', 'id')->toArray();
+
+        return View::make('videos.edit', compact('video_types', $video_types))
+            ->with('video', $video);
     }
 
     /**
