@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
+
 use Validator;
 
 use App\Http\Requests;
@@ -114,9 +116,31 @@ class VideoController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update(Request $request, $id)
     {
-        //
+        $rules =[
+            'source' => 'required|unique:videos' . ($id ? ",id,$id" : ''),
+            'payload' => 'required',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return Redirect::to('videos/' . $id . '/edit')
+                ->withErrors($validator)
+                ->withInput();
+        } 
+
+        $video = Video::find($id);
+        $video->name = $request->name;
+        $video->description = $request->description;
+        $video->video_type_id = $request->video_type_id;
+        $video->source = $request->source;
+        $video->payload = $request->payload;
+        $video->save();
+
+        Session::flash('message', 'Successfully created video!');
+        return Redirect::to('videos');
     }
 
     /**
