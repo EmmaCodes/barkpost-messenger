@@ -1,6 +1,6 @@
   <nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo center">Logo</a>
+      <a href="#!" class="brand-logo center">BarkPost Messenger</a>
       <ul class="left hide-on-med-and-down">
         <li><a href="#">Video</a></li>
         <li><a href="#">Audio</a></li>
