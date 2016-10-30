@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Session;
+use Validator;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -40,7 +42,7 @@ class VideoController extends Controller
     public function create()
     {
         $video_types = VideoTypes::pluck('name', 'id')->toArray();
-        
+
         return View::make('videos.create', compact('video_types', $video_types));
     }
 
@@ -49,9 +51,34 @@ class VideoController extends Controller
      *
      * @return Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        //
+        $rules =[
+            'source' => 'required|unique:videos',
+            'payload' => 'required',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return Redirect::to('videos/create')
+                ->withErrors($validator)
+                ->withInput();
+        } 
+
+        // store
+        $video = new Video();
+        $video->name = $request->name;
+        $video->description = $request->description;
+        $video->video_type_id = $request->video_type_id;
+        $video->source = $request->source;
+        $video->payload = $request->payload;
+        $video->save();
+
+        // redirect
+        Session::flash('message', 'Successfully created video!');
+        return Redirect::to('videos');
+        
     }
 
     /**
