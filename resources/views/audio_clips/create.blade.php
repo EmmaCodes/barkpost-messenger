@@ -15,7 +15,7 @@
         
         <div class="container">
 
-        	<h1>Create an Audio Clip</h1>
+        	<h1>Add an Audio Clip</h1>
 
 			<!-- if there are creation errors, they will show here -->
 			@if (count($errors) > 0)
@@ -29,29 +29,30 @@
 			@endif
 
 			
-			{{ Form::open(array('url' => 'audio-clips')) }}
+			{{ Form::open(array('url' => 'audio-clips', 'class' => 'barkpost-form')) }}
 
 			    <div class="row">
-			        {{ Form::label('name', 'Name') }}
-			        {{ Form::text('name', null) }}
+			    	<div class="input-field col s12">
+				        {{ Form::label('name', 'Name') }}
+				        {{ Form::text('name', null) }}
+			        </div>
 			    </div>
 
 			    <div class="row">
-			        {{ Form::label('description', 'Description') }}
-			        {{ Form::text('description', null) }}
+			    	<div class="input-field col s12">
+				        {{ Form::label('description', 'Description') }}
+				        {{ Form::text('description', null) }}
+			        </div>
 			    </div>
 
 			    <div class="row">
-			        {{ Form::label('source', 'Source URL') }}
-			        {{ Form::text('source', null) }}
+			    	<div class="input-field col s12">
+				        {{ Form::label('source', 'Source URL') }}
+				        {{ Form::text('source', null) }}
+			        </div>
 			    </div>
 
-			    <div class="row">
-			        {{ Form::label('payload', 'Payload URL') }}
-			        {{ Form::text('payload', null) }}
-			    </div>
-
-			    {{ Form::submit('Save Audio', array('class' => 'btn btn-primary')) }}
+			    {{ Form::submit('Save Audio', array('class' => 'btn btn-primary blue lighten-2')) }}
 
 			{{ Form::close() }}
 

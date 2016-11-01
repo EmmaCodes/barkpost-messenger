@@ -3,9 +3,9 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
 // Variables
-// @import "variables";
+@import "variables";
 
-//@import "nav";
+@import "forms";
 
 // Materialize CSS
 @import "node_modules/materialize-css/sass/materialize";

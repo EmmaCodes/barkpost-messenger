@@ -18,7 +18,6 @@ class CreateAudioClipsTable extends Migration
             $table->string('name')->comment('Descriptive name of the audio clip');
             $table->string('description')->comment('Description of what the audio is');
             $table->string('source')->unique()->comment('Original source of audio');
-            $table->string('payload')->comment('Payload URL sent to messenger');
             $table->timestamps();
         });
 

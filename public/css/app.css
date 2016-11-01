@@ -1,4 +1,91 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+.barkpost-form .dropdown-content li > a, .barkpost-form .dropdown-content li > span {
+  color: #64b5f6; }
+
+.barkpost-form .input-field label.active {
+  color: #64b5f6; }
+
+.barkpost-form .input-field label.barkpost-select-label {
+  color: #64b5f6; }
+
+.barkpost-form input:not([type]):focus:not([readonly]) {
+  border-bottom: 1px solid #64b5f6;
+  box-shadow: 0 1px 0 0 #64b5f6; }
+  .barkpost-form input:not([type]):focus:not([readonly]) + label {
+    color: #64b5f6; }
+
+.barkpost-form input[type=text]:focus:not([readonly]) {
+  border-bottom: 1px solid #64b5f6;
+  box-shadow: 0 1px 0 0 #64b5f6; }
+  .barkpost-form input[type=text]:focus:not([readonly]) + label {
+    color: #64b5f6; }
+
+.barkpost-form input[type=password]:focus:not([readonly]) {
+  border-bottom: 1px solid #64b5f6;
+  box-shadow: 0 1px 0 0 #64b5f6; }
+  .barkpost-form input[type=password]:focus:not([readonly]) + label {
+    color: #64b5f6; }
+
+.barkpost-form input[type=email]:focus:not([readonly]) {
+  border-bottom: 1px solid #64b5f6;
+  box-shadow: 0 1px 0 0 #64b5f6; }
+  .barkpost-form input[type=email]:focus:not([readonly]) + label {
+    color: #64b5f6; }
+
+.barkpost-form input[type=url]:focus:not([readonly]) {
+  border-bottom: 1px solid #64b5f6;
+  box-shadow: 0 1px 0 0 #64b5f6; }
+  .barkpost-form input[type=url]:focus:not([readonly]) + label {
+    color: #64b5f6; }
+
+.barkpost-form input[type=time]:focus:not([readonly]) {
+  border-bottom: 1px solid #64b5f6;
+  box-shadow: 0 1px 0 0 #64b5f6; }
+  .barkpost-form input[type=time]:focus:not([readonly]) + label {
+    color: #64b5f6; }
+
+.barkpost-form input[type=date]:focus:not([readonly]) {
+  border-bottom: 1px solid #64b5f6;
+  box-shadow: 0 1px 0 0 #64b5f6; }
+  .barkpost-form input[type=date]:focus:not([readonly]) + label {
+    color: #64b5f6; }
+
+.barkpost-form input[type=datetime]:focus:not([readonly]) {
+  border-bottom: 1px solid #64b5f6;
+  box-shadow: 0 1px 0 0 #64b5f6; }
+  .barkpost-form input[type=datetime]:focus:not([readonly]) + label {
+    color: #64b5f6; }
+
+.barkpost-form input[type=datetime-local]:focus:not([readonly]) {
+  border-bottom: 1px solid #64b5f6;
+  box-shadow: 0 1px 0 0 #64b5f6; }
+  .barkpost-form input[type=datetime-local]:focus:not([readonly]) + label {
+    color: #64b5f6; }
+
+.barkpost-form input[type=tel]:focus:not([readonly]) {
+  border-bottom: 1px solid #64b5f6;
+  box-shadow: 0 1px 0 0 #64b5f6; }
+  .barkpost-form input[type=tel]:focus:not([readonly]) + label {
+    color: #64b5f6; }
+
+.barkpost-form input[type=number]:focus:not([readonly]) {
+  border-bottom: 1px solid #64b5f6;
+  box-shadow: 0 1px 0 0 #64b5f6; }
+  .barkpost-form input[type=number]:focus:not([readonly]) + label {
+    color: #64b5f6; }
+
+.barkpost-form input[type=search]:focus:not([readonly]) {
+  border-bottom: 1px solid #64b5f6;
+  box-shadow: 0 1px 0 0 #64b5f6; }
+  .barkpost-form input[type=search]:focus:not([readonly]) + label {
+    color: #64b5f6; }
+
+.barkpost-form textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #64b5f6;
+  box-shadow: 0 1px 0 0 #64b5f6; }
+  .barkpost-form textarea.materialize-textarea:focus:not([readonly]) + label {
+    color: #64b5f6; }
+
 .materialize-red {
   background-color: #e51c23 !important; }
 

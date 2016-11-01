@@ -16,7 +16,9 @@
         <div class="container">
 
 
-            <h1>All the Audio Clips</h1>
+            <h1>Audio Clips</h1>
+
+            <a class="btn btn-small btn-success blue lighten-2" href="/audio-clips/create">Add New</a>
 
             <!-- will be used to show any messages -->
             @if (Session::has('message'))

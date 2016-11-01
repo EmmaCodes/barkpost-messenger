@@ -32,26 +32,27 @@
 			{{ Form::model($audio_clip, array('route' => array('audio-clips.update', $audio_clip->id), 'method' => 'PUT')) }}
 
 			    <div class="row">
-			        {{ Form::label('name', 'Name') }}
-			        {{ Form::text('name', null) }}
+			    	<div class="input-field col s12">
+				        {{ Form::label('name', 'Name') }}
+				        {{ Form::text('name', null) }}
+			        </div>
 			    </div>
 
 			    <div class="row">
-			        {{ Form::label('description', 'Description') }}
-			        {{ Form::text('description', null) }}
+			    	<div class="input-field col s12">
+				        {{ Form::label('description', 'Description') }}
+				        {{ Form::text('description', null) }}
+			        </div>
 			    </div>
 
 			    <div class="row">
-			        {{ Form::label('source', 'Source URL') }}
-			        {{ Form::text('source', null) }}
+			    	<div class="input-field col s12">
+				        {{ Form::label('source', 'Source URL') }}
+				        {{ Form::text('source', null) }}
+			        </div>
 			    </div>
 
-			    <div class="row">
-			        {{ Form::label('payload', 'Payload URL') }}
-			        {{ Form::text('payload', null) }}
-			    </div>
-
-			    {{ Form::submit('Save Audio Clip', array('class' => 'btn btn-primary')) }}
+			    {{ Form::submit('Save Audio Clip', array('class' => 'btn btn-primary blue lighten-2')) }}
 
 			{{ Form::close() }}
 

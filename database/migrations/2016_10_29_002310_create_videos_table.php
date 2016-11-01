@@ -22,7 +22,9 @@ class CreateVideosTable extends Migration
                 ->references('id')->on('video_types')
                 ->onDelete('cascade');
             $table->string('source')->unique()->comment('Original source of video');
-            $table->string('payload')->comment('Payload URL sent to messenger');
+            $table->string('payload')
+                ->nullable()
+                ->comment('Payload URL sent to messenger');
             $table->timestamps();
         });
 

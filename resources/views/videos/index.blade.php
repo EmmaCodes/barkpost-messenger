@@ -16,7 +16,9 @@
         <div class="container">
 
 
-            <h1>All the Videos</h1>
+            <h1>Videos</h1>
+
+            <a class="btn btn-small btn-success blue lighten-2" href="/videos/create">Add New</a>
 
             <!-- will be used to show any messages -->
             @if (Session::has('message'))
@@ -30,7 +32,6 @@
                         <td>Name</td>
                         <td>Description</td>
                         <td>Source</td>
-                        <td>Payload</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,12 +41,11 @@
                         <td>{{ $value->name }}</td>
                         <td>{{ $value->description }}</td>
                         <td>{{ $value->source }}</td>
-                        <td>{{ $value->payload }}</td>
 
                         <!-- we will also add show, edit, and delete buttons -->
                         <td>
 
-                            <a class="btn btn-small btn-success" href="#">Details</a>
+                            <a class="btn btn-small btn-success blue lighten-2" href="#">Details</a>
                             <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->
 

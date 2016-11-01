@@ -12,6 +12,8 @@ use Validator;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Contracts\WebScraperContract;
+
 use App\Video;
 use App\VideoTypes;
 
@@ -41,6 +43,7 @@ class VideoController extends Controller
     {
         $video_types = VideoTypes::pluck('name', 'id')->toArray();
 
+
         return View::make('videos.create', compact('video_types', $video_types));
     }
 
@@ -52,8 +55,7 @@ class VideoController extends Controller
     public function store(Request $request)
     {
         $rules =[
-            'source' => 'required|unique:videos',
-            'payload' => 'required',
+            'source' => 'required|unique:videos'
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -69,6 +71,13 @@ class VideoController extends Controller
         $video->description = $request->description;
         $video->video_type_id = $request->video_type_id;
         $video->source = $request->source;
+
+        /**
+         * Get absolute path of sourced video
+         */
+        //$payload = $web_scrapper->getMetaTag($request->source, $property);
+
+        //$video->payload = $request->payload;
         $video->payload = $request->payload;
         $video->save();
 

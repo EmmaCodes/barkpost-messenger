@@ -29,10 +29,6 @@
 		        {{ $video->source }}
 		    </div>
 
-		    <div class="row">
-		        {{ $video->payload }}
-		    </div>
-
         </div>
 
         @include('partials/js')
