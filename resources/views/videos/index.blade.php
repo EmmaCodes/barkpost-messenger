@@ -32,6 +32,7 @@
                         <td>Name</td>
                         <td>Description</td>
                         <td>Source</td>
+                        <td>Actions</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,17 +43,35 @@
                         <td>{{ $value->description }}</td>
                         <td>{{ $value->source }}</td>
 
-                        <!-- we will also add show, edit, and delete buttons -->
                         <td>
+                            <!-- Dropdown Trigger -->
+                            <a class='dropdown-button btn' href='#' data-activates='dropdown{{ $value->id }}'>
+                                <i class="material-icons">system_update_alt</i> Actions
+                            </a>
 
-                            <a class="btn btn-small btn-success blue lighten-2" href="#">Details</a>
-                            <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
-                            <!-- we will add this later since its a little more complicated than the other two buttons -->
+                            <!-- Dropdown Structure -->
+                            <ul id='dropdown{{ $value->id }}' class='dropdown-content'>
+                                <li>
+                                    <a href="/videos/{{ $value->id }}/edit">
+                                        <i class="material-icons tiny">mode_edit</i> Edit
+                                    </a>
+                                </li>
+                                <li>
+                                    {{ Form::open(array('url' => url('videos/' . $value->id), 'id'=>'video-'.$value->id.'-delete')) }}
 
-                            <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
-                            <!-- <a class="btn btn-small btn-success" href="{{ URL::to('nerds/' . $value->id) }}">Show this Nerd</a>  -->
-                            <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
-                            <!-- <a class="btn btn-small btn-info" href="{{ URL::to('nerds/' . $value->id . '/edit') }}">Edit this Nerd</a> -->
+                                        {{ Form::hidden('_method', 'DELETE') }}
+                                    {{ Form::close() }}
+                                    <a href="#" onclick="$('#video-{{ $value->id }}-delete').submit()">
+                                       <i class="material-icons tiny">delete</i> Delete
+                                    </a>
+                                </li>
+                                <li>
+                                    <!-- Trigger -->
+                                    <a href="#" class="copy" data-clipboard-text="{{ $value->payload }}">
+                                        <i class="material-icons tiny">settings</i> Copy API
+                                    </a>
+                                </li>
+                            </ul>
 
                         </td>
                     </tr>
@@ -62,5 +81,11 @@
 
         </div>
         @include('partials/js')
+        <script>
+            var clipboard = new Clipboard('a.copy');
+            clipboard.on('success', function(e) {
+                 Materialize.toast('API Url Copied', 4000)
+            });
+        </script>
     </body>
 </html>

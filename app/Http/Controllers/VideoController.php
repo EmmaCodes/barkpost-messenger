@@ -87,8 +87,8 @@ class VideoController extends Controller
          * Get absolute path of sourced video
          */
         $payload = $video_service->generatePayload($video);
-
         $video->payload = $payload;
+
         $video->save();
 
         Session::flash('message', 'Successfully created video!');
@@ -150,8 +150,20 @@ class VideoController extends Controller
         $video->name = $request->name;
         $video->description = $request->description;
         $video->video_type_id = $request->video_type_id;
+
         $video->source = $request->source;
-        $video->payload = $request->payload;
+        
+        /**
+         * Update payload value if source value changed
+         */
+        if ($video->source != $request->source) {
+            /**
+             * Get absolute path of sourced video
+             */
+            $payload = $video_service->generatePayload($video);
+            $video->payload = $payload;
+        }
+
         $video->save();
 
         Session::flash('message', 'Successfully updated video!');

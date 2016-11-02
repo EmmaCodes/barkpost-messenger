@@ -24,11 +24,7 @@
 		    <div class="row">
 		        {{ $audio_clip->source }}
 		    </div>
-
-		    <div class="row">
-		        {{ $audio_clip->payload }}
-		    </div>
-
+            
         </div>
 
         @include('partials/js')
