@@ -49,7 +49,7 @@
                             <!-- Dropdown Structure -->
                             <ul id='dropdown{{ $value->id }}' class='dropdown-content'>
                                 <li>
-                                    <a href="/audio-clips/{{ $value->id }}/edit">
+                                    <a class="blue-text text-lighten-2" href="/audio-clips/{{ $value->id }}/edit">
                                         <i class="material-icons tiny">mode_edit</i> Edit
                                     </a>
                                 </li>
@@ -58,13 +58,13 @@
 
                                         {{ Form::hidden('_method', 'DELETE') }}
                                     {{ Form::close() }}
-                                    <a href="#" onclick="$('#audio-{{ $value->id }}-delete').submit()">
+                                    <a class="blue-text text-lighten-2" href="#" onclick="$('#audio-{{ $value->id }}-delete').submit()">
                                        <i class="material-icons tiny">delete</i> Delete
                                     </a>
                                 </li>
                                 <li>
                                     <!-- Trigger -->
-                                    <a href="#" class="copy" data-clipboard-text="{{ url('/api/audio/'.$value->id.'?user_id='.$chatfuel_param) }}">
+                                    <a class="blue-text text-lighten-2" href="#" class="copy" data-clipboard-text="{{ url('/api/audio/'.$value->id.'?user_id='.$chatfuel_param) }}">
                                         <i class="material-icons tiny">settings</i> Copy API
                                     </a>
                                 </li>

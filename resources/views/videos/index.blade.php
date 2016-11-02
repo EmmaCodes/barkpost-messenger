@@ -45,14 +45,14 @@
 
                         <td>
                             <!-- Dropdown Trigger -->
-                            <a class='dropdown-button btn' href='#' data-activates='dropdown{{ $value->id }}'>
+                            <a class='dropdown-button btn blue lighten-2' href='#' data-activates='dropdown{{ $value->id }}'>
                                 <i class="material-icons">system_update_alt</i> Actions
                             </a>
 
                             <!-- Dropdown Structure -->
                             <ul id='dropdown{{ $value->id }}' class='dropdown-content'>
                                 <li>
-                                    <a href="/videos/{{ $value->id }}/edit">
+                                    <a class="blue-text text-lighten-2" href="/videos/{{ $value->id }}/edit">
                                         <i class="material-icons tiny">mode_edit</i> Edit
                                     </a>
                                 </li>
@@ -61,13 +61,13 @@
 
                                         {{ Form::hidden('_method', 'DELETE') }}
                                     {{ Form::close() }}
-                                    <a href="#" onclick="$('#video-{{ $value->id }}-delete').submit()">
+                                    <a class="blue-text text-lighten-2" href="#" onclick="$('#video-{{ $value->id }}-delete').submit()">
                                        <i class="material-icons tiny">delete</i> Delete
                                     </a>
                                 </li>
                                 <li>
                                     <!-- Trigger -->
-                                    <a href="#" class="copy" data-clipboard-text="{{ url('/api/video/'.$value->id.'?user_id='.$chatfuel_param) }}">
+                                    <a class="blue-text text-lighten-2" href="#" class="copy" data-clipboard-text="{{ url('/api/video/'.$value->id.'?user_id='.$chatfuel_param) }}">
                                         <i class="material-icons tiny">settings</i> Copy API
                                     </a>
                                 </li>

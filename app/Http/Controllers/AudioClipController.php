@@ -26,8 +26,11 @@ class AudioClipController extends Controller
     {
         $audio_clips = AudioClip::all();
 
+        $chatfuel_param = "{{ fb_id }}";
+
         return View::make('audio_clips.index')
-            ->with('audio_clips', $audio_clips);
+            ->with('audio_clips', $audio_clips)
+            ->with('chatfuel_param', $chatfuel_param);
         
     }
 
