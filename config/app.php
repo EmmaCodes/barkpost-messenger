@@ -166,7 +166,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Spatie\Tail\TailServiceProvider::class,
         //
 
         /*

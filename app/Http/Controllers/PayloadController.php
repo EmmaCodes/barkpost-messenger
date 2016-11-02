@@ -39,10 +39,7 @@ class PayloadController extends Controller
         
         
         $message = [
-            'recipient' => [
-                'id' => $user_id
-            ],
-            'message' => [
+            [
                 'attachment' => [
                     'type' => $media_type,
                     'payload' => [

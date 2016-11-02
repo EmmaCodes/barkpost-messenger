@@ -125,8 +125,7 @@ class VideoController extends Controller
     public function update(Request $request, $id)
     {
         $rules =[
-            'source' => 'required|unique:videos' . ($id ? ",id,$id" : ''),
-            'payload' => 'required',
+            'source' => 'required|unique:videos' . ($id ? ",id,$id" : '')
         ];
 
         $validator = Validator::make($request->all(), $rules);

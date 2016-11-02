@@ -64,7 +64,7 @@
                                 </li>
                                 <li>
                                     <!-- Trigger -->
-                                    <a class="blue-text text-lighten-2 copy" href="#" data-clipboard-text="{{ url('/api/video/'.$value->id.'?user_id='.$chatfuel_param) }}">
+                                    <a class="blue-text text-lighten-2 copy" href="#" data-clipboard-text="{{ url('/api/video/'.$value->id) }}">
                                         <i class="material-icons tiny">settings</i> Copy API
                                     </a>
                                 </li>
