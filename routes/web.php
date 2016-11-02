@@ -18,3 +18,12 @@ Route::get('/', function () {
 Route::resource('videos', 'VideoController');
 
 Route::resource('audio-clips', 'AudioClipController');
+
+/**
+ * Get Video Payload for FB Messenger
+ */
+Route::get(
+    '/api/video/{id}',
+    ['uses' => 'PayloadController@video',
+    'as' => 'payload.video']
+);

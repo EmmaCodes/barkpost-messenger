@@ -21,17 +21,6 @@ class VideoController extends Controller
 {
 
     /**
-     * 
-     * @var VideoService
-     */
-    // protected $video_service;
-
-    // public function __construct(VideoService $video_service)
-    // {
-    //     $this->video_service = $video_service;
-    // }
-
-    /**
      * Display a listing of the resource.
      *
      * @return Response
@@ -39,10 +28,12 @@ class VideoController extends Controller
     public function index()
     {
         $videos = Video::all();
+
+        $chatfuel_param = "{{ fb_id }}";
   
         return View::make('videos.index')
-            ->with('videos', $videos);
-        
+            ->with('videos', $videos)
+            ->with('chatfuel_param', $chatfuel_param);
     }
 
     /**

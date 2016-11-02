@@ -67,7 +67,7 @@
                                 </li>
                                 <li>
                                     <!-- Trigger -->
-                                    <a href="#" class="copy" data-clipboard-text="{{ $value->payload }}">
+                                    <a href="#" class="copy" data-clipboard-text="{{ url('/api/video/'.$value->id.'?user_id='.$chatfuel_param) }}">
                                         <i class="material-icons tiny">settings</i> Copy API
                                     </a>
                                 </li>
