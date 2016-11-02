@@ -23,7 +23,7 @@ Route::resource('audio-clips', 'AudioClipController');
  * Get Video Payload for FB Messenger
  */
 Route::get(
-    '/api/video/{id}',
-    ['uses' => 'PayloadController@video',
-    'as' => 'payload.video']
+    '/api/{media_type}/{id}',
+    ['uses' => 'PayloadController@mediaAttachment',
+    'as' => 'payload.media_attachment']
 );

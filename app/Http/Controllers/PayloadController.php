@@ -11,7 +11,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Video;
-use App\VideoTypes;
+use App\AudioClip;
 
 class PayloadController extends Controller
 {
@@ -21,10 +21,22 @@ class PayloadController extends Controller
      *
      * @return Response
      */
-    public function video(Request $request, $id)
+    public function mediaAttachment(Request $request, $media_type, $id)
     {
         $user_id = $request->get('user_id');
-        $video = Video::find($id);
+
+        $payload_url = '';
+
+        if ($media_type == 'video') {
+            $video = Video::find($id);
+            $payload_url = $video->payload;
+        } 
+
+        if ($media_type == 'audio') {
+            $audio = AudioClip::find($id);
+            $payload_url = $audio->source;
+        } 
+        
         
         $message = [
             'recipient' => [
@@ -32,9 +44,9 @@ class PayloadController extends Controller
             ],
             'message' => [
                 'attachment' => [
-                    'type' => 'video',
+                    'type' => $media_type,
                     'payload' => [
-                        'url' => $video->payload
+                        'url' => $payload_url
                     ]
                 ]
             ]
