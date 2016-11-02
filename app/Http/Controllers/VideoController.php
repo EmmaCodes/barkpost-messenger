@@ -12,13 +12,24 @@ use Validator;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Contracts\WebScraperContract;
+use App\Helpers\VideoService;
 
 use App\Video;
 use App\VideoTypes;
 
 class VideoController extends Controller
 {
+
+    /**
+     * 
+     * @var VideoService
+     */
+    // protected $video_service;
+
+    // public function __construct(VideoService $video_service)
+    // {
+    //     $this->video_service = $video_service;
+    // }
 
     /**
      * Display a listing of the resource.
@@ -52,7 +63,7 @@ class VideoController extends Controller
      *
      * @return Response
      */
-    public function store(Request $request)
+    public function store(Request $request, VideoService $video_service)
     {
         $rules =[
             'source' => 'required|unique:videos'
@@ -75,10 +86,9 @@ class VideoController extends Controller
         /**
          * Get absolute path of sourced video
          */
-        //$payload = $web_scrapper->getMetaTag($request->source, $property);
+        $payload = $video_service->generatePayload($video);
 
-        //$video->payload = $request->payload;
-        $video->payload = $request->payload;
+        $video->payload = $payload;
         $video->save();
 
         Session::flash('message', 'Successfully created video!');

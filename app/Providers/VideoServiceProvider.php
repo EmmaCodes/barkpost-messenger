@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Helpers\VideoService;
+use App\Helpers\WebScraper;
 
 class VideoServiceProvider extends ServiceProvider
 {
@@ -31,8 +32,8 @@ class VideoServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(VideoService::class, function() {
-            return new VideoService();
+        $this->app->singleton(VideoService::class, function($app) {
+            return new VideoService(new WebScraper());
         });
     }
 
