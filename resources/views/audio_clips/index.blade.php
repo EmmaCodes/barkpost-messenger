@@ -32,6 +32,7 @@
                         <td>Name</td>
                         <td>Description</td>
                         <td>Source</td>
+                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,7 +45,7 @@
 
                         <td>
                             <!-- Dropdown Trigger -->
-                            <a class='dropdown-button btn' href='#' data-activates='dropdown{{ $value->id }}'><i class="material-icons">system_update_alt</i></a>
+                            <a class='dropdown-button btn blue lighten-2' href='#' data-activates='dropdown{{ $value->id }}'>Actions</a>
 
                             <!-- Dropdown Structure -->
                             <ul id='dropdown{{ $value->id }}' class='dropdown-content'>
@@ -64,7 +65,7 @@
                                 </li>
                                 <li>
                                     <!-- Trigger -->
-                                    <a class="blue-text text-lighten-2" href="#" class="copy" data-clipboard-text="{{ url('/api/audio/'.$value->id.'?user_id='.$chatfuel_param) }}">
+                                    <a class="blue-text text-lighten-2 copy" href="#" data-clipboard-text="{{ url('/api/audio/'.$value->id.'?user_id='.$chatfuel_param) }}">
                                         <i class="material-icons tiny">settings</i> Copy API
                                     </a>
                                 </li>
@@ -78,5 +79,11 @@
 
         </div>
         @include('partials/js')
+        <script>
+            var clipboard = new Clipboard('a.copy');
+            clipboard.on('success', function(e) {
+                 Materialize.toast('API Url Copied', 4000)
+            });
+        </script>
     </body>
 </html>

@@ -32,7 +32,7 @@
                         <td>Name</td>
                         <td>Description</td>
                         <td>Source</td>
-                        <td>Actions</td>
+                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,9 +45,7 @@
 
                         <td>
                             <!-- Dropdown Trigger -->
-                            <a class='dropdown-button btn blue lighten-2' href='#' data-activates='dropdown{{ $value->id }}'>
-                                <i class="material-icons">system_update_alt</i> Actions
-                            </a>
+                            <a class='dropdown-button btn blue lighten-2' href='#' data-activates='dropdown{{ $value->id }}'>Actions</a>
 
                             <!-- Dropdown Structure -->
                             <ul id='dropdown{{ $value->id }}' class='dropdown-content'>
@@ -58,7 +56,6 @@
                                 </li>
                                 <li>
                                     {{ Form::open(array('url' => url('videos/' . $value->id), 'id'=>'video-'.$value->id.'-delete')) }}
-
                                         {{ Form::hidden('_method', 'DELETE') }}
                                     {{ Form::close() }}
                                     <a class="blue-text text-lighten-2" href="#" onclick="$('#video-{{ $value->id }}-delete').submit()">
@@ -67,7 +64,7 @@
                                 </li>
                                 <li>
                                     <!-- Trigger -->
-                                    <a class="blue-text text-lighten-2" href="#" class="copy" data-clipboard-text="{{ url('/api/video/'.$value->id.'?user_id='.$chatfuel_param) }}">
+                                    <a class="blue-text text-lighten-2 copy" href="#" data-clipboard-text="{{ url('/api/video/'.$value->id.'?user_id='.$chatfuel_param) }}">
                                         <i class="material-icons tiny">settings</i> Copy API
                                     </a>
                                 </li>

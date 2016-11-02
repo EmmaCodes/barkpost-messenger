@@ -52,16 +52,9 @@
 			        </div>
 			    </div>
 
-			    {{ Form::submit('Save Audio Clip', array('class' => 'btn btn-primary blue lighten-2')) }}
+			    {{ Form::submit('Save Audio', array('class' => 'btn btn-primary blue lighten-2')) }}
 
 			{{ Form::close() }}
-
-			<!-- delete the video (uses the destroy method DESTROY /videos/{id} -->
-            <!-- we will add this later since its a little more complicated than the other two buttons -->
-            {{ Form::open(array('url' => 'audio-clips/' . $audio_clip->id)) }}
-                {{ Form::hidden('_method', 'DELETE') }}
-                {{ Form::submit('Delete this Audio Clip') }}
-            {{ Form::close() }}
 
         </div>
 

@@ -52,8 +52,7 @@ class AudioClipController extends Controller
     public function store(Request $request)
     {
         $rules =[
-            'source' => 'required',
-            'payload' => 'required',
+            'source' => 'required'
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -68,7 +67,6 @@ class AudioClipController extends Controller
         $audio_clip->name = $request->name;
         $audio_clip->description = $request->description;
         $audio_clip->source = $request->source;
-        $audio_clip->payload = $request->payload;
         $audio_clip->save();
 
         Session::flash('message', 'Successfully created audio!');
@@ -113,8 +111,7 @@ class AudioClipController extends Controller
     public function update(Request $request, $id)
     {
         $rules =[
-            'source' => 'required|unique:audio_clips' . ($id ? ",id,$id" : ''),
-            'payload' => 'required',
+            'source' => 'required|unique:audio_clips' . ($id ? ",id,$id" : '')
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -129,7 +126,6 @@ class AudioClipController extends Controller
         $audio_clip->name = $request->name;
         $audio_clip->description = $request->description;
         $audio_clip->source = $request->source;
-        $audio_clip->payload = $request->payload;
         $audio_clip->save();
 
         Session::flash('message', 'Successfully updated audio!');

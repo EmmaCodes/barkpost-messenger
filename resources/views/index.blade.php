@@ -14,20 +14,36 @@
 
         @include('partials/nav')
 
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
-            @endif
+        <div class="content">
 
-            <div class="content">
+            <div class="row barkpost-landing">
+
+                <div class="col s6">
+                  <div class="center">
+                    <div class="barkpost-square-img">
+                        <a href="/videos">
+                            <img class="responsive-img" src="images/videos-welcome.gif">
+                        </a>
+                    </div>
+                    <p class="promo-caption">Video</p>
+                    <p class="light center">Create API to send videos through Chatfuel</p>
+                  </div>
+                </div>
+
+                <div class="col s6">
+                  <div class="center">
+                    <div class="barkpost-square-img">
+                        <a href="/audio-clips">
+                            <img class="responsive-img" src="images/audio-welcome.gif">
+                        </a>
+                    </div>
+                    <p class="promo-caption">Audio</p>
+                    <p class="light center">Create API to send audio clips through Chatfuel</p>
+                  </div>
+                </div>
+
             </div>
+
         </div>
 
         @include('partials/js')
