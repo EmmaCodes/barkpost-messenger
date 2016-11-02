@@ -62,6 +62,12 @@
                                        <i class="material-icons tiny">delete</i> Delete
                                     </a>
                                 </li>
+                                <li>
+                                    <!-- Trigger -->
+                                    <a href="#" class="copy" data-clipboard-text="{{ url('/api/audio/'.$value->id.'?user_id='.$chatfuel_param) }}">
+                                        <i class="material-icons tiny">settings</i> Copy API
+                                    </a>
+                                </li>
                             </ul>
 
                         </td>
