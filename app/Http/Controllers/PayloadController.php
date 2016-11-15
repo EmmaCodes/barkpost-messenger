@@ -30,22 +30,24 @@ class PayloadController extends Controller
         if ($media_type == 'video') {
             $video = Video::find($id);
             $payload_url = $video->payload;
-        } 
+        }
 
         if ($media_type == 'audio') {
             $audio = AudioClip::find($id);
             $payload_url = $audio->source;
-        } 
-        
-        
+        }
+
+
         $message = [
-            [
-                'attachment' => [
-                    'type' => $media_type,
-                    'payload' => [
-                        'url' => $payload_url
+            'messages' => [
+                [
+                    'attachment' => [
+                      'type' => $media_type,
+                      'payload' => [
+                          'url' => $payload_url
+                      ]
                     ]
-                ]
+                ],
             ]
         ];
 
