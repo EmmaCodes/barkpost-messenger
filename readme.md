@@ -22,6 +22,14 @@ mysql
 mysql --database forge -u root
 grant ALL on forge.* to 'forge'@'localhost';
 ```
+### Create .env file & modify whatever values you wish
+```shell
+cp .env.example .env
+```
+### Migrate DB
+```shell
+php artisan migrate
+```
 
 ## Developing
 ### Launch local server
